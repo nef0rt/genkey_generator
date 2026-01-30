@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GalaxyKeyGen - Ключи Активации</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a2a 0%, #1a0033 50%, #0c1445 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Звездный фон */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 5s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            z-index: 1;
+            position: relative;
+        }
+
+        /* Шапка */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            color: #6c63ff;
+            text-shadow: 0 0 15px #6c63ff;
+        }
+
+        .logo-text h1 {
+            font-size: 2rem;
+            background: linear-gradient(90deg, #6c63ff, #ff6b9d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6c63ff, #ff6b9d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.1);
+        }
+
+        .user-info {
+            text-align: right;
+        }
+
+        .user-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .user-stats {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Основной контент */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* Блок генерации */
+        .generator-section {
+            background: rgba(20, 20, 60, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #6c63ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            font-size: 1.5rem;
+        }
+
+        .platform-selector {
+            margin-bottom: 30px;
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .platform-card {
+            background: rgba(40, 40, 80, 0.5);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .platform-card:hover {
+            background: rgba(60, 60, 120, 0.7);
+            border-color: #6c63ff;
+            transform: translateY(-5px);
+        }
+
+        .platform-card.selected {
+            background: rgba(108, 99, 255, 0.2);
+            border-color: #6c63ff;
+        }
+
+        .platform-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #6c63ff;
+        }
+
+        .platform-name {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .key-display {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .key-label {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .key-value {
+            font-size: 1.8rem;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, #ff6b9d, #6c63ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+            word-break: break-all;
+        }
+
+        .generate-btn {
+            background: linear-gradient(90deg, #6c63ff, #ff6b9d);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            letter-spacing: 1px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .generate-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(108, 99, 255, 0.5);
+        }
+
+        .generate-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Боковая панель */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .stats-card, .subscription-card {
+            background: rgba(20, 20, 60, 0.7);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stats-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stats-value {
+            font-weight: bold;
+            color: #6c63ff;
+        }
+
+        .subscription-status {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .status-active {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+        }
+
+        .status-inactive {
+            background: rgba(244, 67, 54, 0.2);
+            color: #F44336;
+        }
+
+        .subscription-input {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .subscription-input input {
+            flex: 1;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-family: 'Courier New', monospace;
+        }
+
+        .subscription-input button {
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            background: #6c63ff;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .subscription-input button:hover {
+            background: #5a52d5;
+        }
+
+        /* Подвал */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Модальное окно регистрации */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal {
+            background: linear-gradient(135deg, #1a0033 0%, #0c1445 100%);
+            border-radius: 20px;
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            border: 1px solid rgba(108, 99, 255, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #6c63ff;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .form-actions button {
+            flex: 1;
+            padding: 15px;
+            border-radius: 8px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #6c63ff;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .form-actions button:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .platform-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .user-profile {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .platform-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .platform-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .key-value {
+                font-size: 1.4rem;
+                letter-spacing: 2px;
+            }
+            
+            .subscription-input {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Звездный фон -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Модальное окно регистрации (показывается при первом заходе) -->
+    <div class="modal-overlay" id="registrationModal">
+        <div class="modal">
+            <h2><i class="fas fa-user-astronaut"></i> Регистрация в GalaxyKeyGen</h2>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="username">Имя пользователя</label>
+                    <input type="text" id="username" placeholder="Введите ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="example@mail.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="avatarColor">Цвет аватара</label>
+                    <input type="color" id="avatarColor" value="#6c63ff" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Создать профиль</button>
+                    <button type="button" class="btn-secondary" id="skipRegistration">Пропустить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Шапка -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-key"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>GalaxyKeyGen</h1>
+                    <p>Генератор лицензионных ключей</p>
+                </div>
+            </div>
+            <div class="user-profile">
+                <div class="user-info">
+                    <div class="user-name" id="displayUsername">Гость</div>
+                    <div class="user-stats">Ключей: <span id="totalKeys">0</span></div>
+                </div>
+                <div class="user-avatar" id="userAvatar" title="Изменить профиль">
+                    G
+                </div>
+            </div>
+        </header>
+
+        <!-- Основной контент -->
+        <div class="main-content">
+            <!-- Блок генерации -->
+            <div class="generator-section">
+                <h2 class="section-title">
+                    <i class="fas fa-rocket"></i> Выберите платформу
+                </h2>
+                
+                <div class="platform-selector">
+                    <div class="platform-grid" id="platformGrid">
+                        <!-- Платформы будут добавлены через JavaScript -->
+                    </div>
+                </div>
+
+                <div class="key-display">
+                    <div class="key-label">Ваш ключ активации:</div>
+                    <div class="key-value" id="generatedKey">XXXX-XXXX-XXXX-XXXX</div>
+                    <button class="generate-btn" id="generateBtn">
+                        <i class="fas fa-bolt"></i> Сгенерировать ключ
+                    </button>
+                </div>
+            </div>
+
+            <!-- Боковая панель -->
+            <div class="sidebar">
+                <!-- Статистика -->
+                <div class="stats-card">
+                    <h3 class="section-title">
+                        <i class="fas fa-chart-bar"></i> Ваша статистика
+                    </h3>
+                    <div class="stats-item">
+                        <span>Всего ключей:</span>
+                        <span class="stats-value" id="statsTotalKeys">0</span>
+                    </div>
+                    <div class="stats-item">
+                        <span>Сегодня:</span>
+                        <span class="stats-value" id="statsTodayKeys">0</span>
+                    </div>
+                    <div class="stats-item">
+                        <span>Последняя платформа:</span>
+                        <span class="stats-value" id="statsLastPlatform">-</span>
+                    </div>
+                </div>
+
+                <!-- Подписка -->
+                <div class="subscription-card">
+                    <h3 class="section-title">
+                        <i class="fas fa-crown"></i> Подписка Premium
+                    </h3>
+                    <div class="subscription-status">
+                        <span>Статус:</span>
+                        <div class="status-badge status-inactive" id="subscriptionStatus">Не активна</div>
+                    </div>
+                    <p>Активируйте подписку для доступа к эксклюзивным ключам и функциям</p>
+                    <div class="subscription-input">
+                        <input type="text" id="subscriptionKey" placeholder="Введите ключ подписки" value="VEN2-ENTE-TRYM-GYMS">
+                        <button id="activateSubscription">Активировать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Подвал -->
+        <footer>
+            <p>GalaxyKeyGen © 2024 | Все ключи генерируются случайным образом | Сервис предоставляется "как есть"</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">
+                <i class="fas fa-exclamation-circle"></i> Внимание: Данный сайт является демонстрационным проектом.
+            </p>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Массив платформ с иконками
+        const platforms = [
+            { id: 'windows', name: 'Windows 10/11', icon: 'fab fa-windows' },
+            { id: 'office', name: 'Microsoft Office', icon: 'fas fa-file-word' },
+            { id: 'adobe', name: 'Adobe Creative', icon: 'fas fa-palette' },
+            { id: 'steam', name: 'Steam Games', icon: 'fab fa-steam' },
+            { id: 'origin', name: 'EA Origin', icon: 'fas fa-gamepad' },
+            { id: 'uplay', name: 'Ubisoft Connect', icon: 'fas fa-tower-broadcast' },
+            { id: 'epic', name: 'Epic Games', icon: 'fas fa-ghost' },
+            { id: 'gog', name: 'GOG Galaxy', icon: 'fas fa-galaxy' },
+            { id: 'battlenet', name: 'Battle.net', icon: 'fab fa-battle-net' },
+            { id: 'spotify', name: 'Spotify', icon: 'fab fa-spotify' },
+            { id: 'netflix', name: 'Netflix', icon: 'fas fa-tv' },
+            { id: 'youtube', name: 'YouTube Premium', icon: 'fab fa-youtube' },
+            { id: 'antivirus', name: 'Антивирусы', icon: 'fas fa-shield-alt' },
+            { id: 'vmware', name: 'VMware', icon: 'fas fa-server' },
+            { id: 'autodesk', name: 'Autodesk', icon: 'fas fa-cube' },
+            { id: 'android', name: 'Android Apps', icon: 'fab fa-android' },
+            { id: 'ios', name: 'iOS Apps', icon: 'fab fa-apple' },
+            { id: 'linux', name: 'Linux Distros', icon: 'fab fa-linux' }
+        ];
+
+        // Премиум ключ подписки (только одна активация)
+        const PREMIUM_SUBSCRIPTION_KEY = "VEN2-ENTE-TRYM-GYMS";
+        let isSubscriptionActive = false;
+        let subscriptionUsed = false;
+        
+        // Данные пользователя
+        let userData = {
+            username: "Гость",
+            email: "",
+            avatarColor: "#6c63ff",
+            totalKeys: 0,
+            todayKeys: 0,
+            lastPlatform: "",
+            lastLogin: new Date().toISOString().split('T')[0]
+        };
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            initStars();
+            loadUserData();
+            renderPlatforms();
+            setupEventListeners();
+            
+            // Проверяем, была ли сегодня авторизация
+            const today = new Date().toISOString().split('T')[0];
+            if (userData.lastLogin !== today) {
+                userData.todayKeys = 0;
+                userData.lastLogin = today;
+                saveUserData();
+            }
+            
+            updateUI();
+        });
+
+        // Создание звездного фона
+        function initStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Случайные параметры звезды
+                const size = Math.random() * 3;
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const duration = 2 + Math.random() * 8;
+                const delay = Math.random() * 5;
+                
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.animationDuration = `${duration}s`;
+                star.style.animationDelay = `${delay}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Загрузка данных пользователя из localStorage
+        function loadUserData() {
+            const savedData = localStorage.getItem('galaxyKeyGenUser');
+            if (savedData) {
+                userData = JSON.parse(savedData);
+                document.getElementById('registrationModal').style.display = 'none';
+            } else {
+                document.getElementById('registrationModal').style.display = 'flex';
+            }
+            
+            // Проверка подписки
+            const subscriptionData = localStorage.getItem('galaxyKeyGenSubscription');
+            if (subscriptionData === 'active') {
+                isSubscriptionActive = true;
+                subscriptionUsed = true;
+            }
+        }
+
+        // Сохранение данных пользователя
+        function saveUserData() {
+            localStorage.setItem('galaxyKeyGenUser', JSON.stringify(userData));
+        }
+
+        // Отображение платформ
+        function renderPlatforms() {
+            const platformGrid = document.getElementById('platformGrid');
+            platformGrid.innerHTML = '';
+            
+            platforms.forEach(platform => {
+                const platformCard = document.createElement('div');
+                platformCard.className = 'platform-card';
+                platformCard.dataset.id = platform.id;
+                
+                platformCard.innerHTML = `
+                    <div class="platform-icon">
+                        <i class="${platform.icon}"></i>
+                    </div>
+                    <div class="platform-name">${platform.name}</div>
+                `;
+                
+                platformCard.addEventListener('click', () => selectPlatform(platform.id));
+                platformGrid.appendChild(platformCard);
+            });
+            
+            // Выбираем первую платформу по умолчанию
+            if (platforms.length > 0) {
+                selectPlatform(platforms[0].id);
+            }
+        }
+
+        // Выбор платформы
+        let selectedPlatformId = '';
+        function selectPlatform(platformId) {
+            selectedPlatformId = platformId;
+            
+            // Снимаем выделение со всех карточек
+            document.querySelectorAll('.platform-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Выделяем выбранную карточку
+            const selectedCard = document.querySelector(`.platform-card[data-id="${platformId}"]`);
+            if (selectedCard) {
+                selectedCard.classList.add('selected');
+            }
+            
+            // Обновляем статистику
+            const platform = platforms.find(p => p.id === platformId);
+            if (platform) {
+                userData.lastPlatform = platform.name;
+                saveUserData();
+                updateUI();
+            }
+        }
+
+        // Генерация случайного ключа
+        function generateKey() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let key = '';
+            
+            for (let i = 0; i < 16; i++) {
+                if (i > 0 && i % 4 === 0) {
+                    key += '-';
+                }
+                key += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            
+            return key;
+        }
+
+        // Обновление интерфейса
+        function updateUI() {
+            // Обновляем имя пользователя и аватар
+            document.getElementById('displayUsername').textContent = userData.username;
+            document.getElementById('userAvatar').textContent = userData.username.charAt(0).toUpperCase();
+            document.getElementById('userAvatar').style.background = `linear-gradient(135deg, ${userData.avatarColor}, #ff6b9d)`;
+            
+            // Обновляем статистику
+            document.getElementById('totalKeys').textContent = userData.totalKeys;
+            document.getElementById('statsTotalKeys').textContent = userData.totalKeys;
+            document.getElementById('statsTodayKeys').textContent = userData.todayKeys;
+            document.getElementById('statsLastPlatform').textContent = userData.lastPlatform || '-';
+            
+            // Обновляем статус подписки
+            const statusElement = document.getElementById('subscriptionStatus');
+            if (isSubscriptionActive) {
+                statusElement.textContent = 'Активна';
+                statusElement.className = 'status-badge status-active';
+            } else {
+                statusElement.textContent = 'Не активна';
+                statusElement.className = 'status-badge status-inactive';
+            }
+        }
+
+        // Настройка обработчиков событий
+        function setupEventListeners() {
+            // Регистрация
+            document.getElementById('registrationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                userData.username = document.getElementById('username').value || 'Пользователь';
+                userData.email = document.getElementById('email').value || '';
+                userData.avatarColor = document.getElementById('avatarColor').value;
+                
+                saveUserData();
+                document.getElementById('registrationModal').style.display = 'none';
+                updateUI();
+            });
+            
+            document.getElementById('skipRegistration').addEventListener('click', function() {
+                userData.username = 'Гость';
+                saveUserData();
+                document.getElementById('registrationModal').style.display = 'none';
+                updateUI();
+            });
+            
+            // Изменение профиля
+            document.getElementById('userAvatar').addEventListener('click', function() {
+                document.getElementById('registrationModal').style.display = 'flex';
+                document.getElementById('username').value = userData.username === 'Гость' ? '' : userData.username;
+                document.getElementById('email').value = userData.email;
+                document.getElementById('avatarColor').value = userData.avatarColor;
+            });
+            
+            // Генерация ключа
+            document.getElementById('generateBtn').addEventListener('click', function() {
+                if (!selectedPlatformId) {
+                    alert('Пожалуйста, выберите платформу!');
+                    return;
+                }
+                
+                // Проверка лимитов для бесплатных пользователей
+                if (!isSubscriptionActive && userData.todayKeys >= 3) {
+                    alert('Бесплатный лимит исчерпан! Активируйте подписку для генерации большего количества ключей.');
+                    return;
+                }
+                
+                const key = generateKey();
+                document.getElementById('generatedKey').textContent = key;
+                
+                // Обновляем статистику
+                userData.totalKeys++;
+                userData.todayKeys++;
+                saveUserData();
+                updateUI();
+                
+                // Анимация кнопки
+                const btn = this;
+                btn.innerHTML = '<i class="fas fa-check"></i> Ключ сгенерирован!';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-bolt"></i> Сгенерировать ключ';
+                    btn.disabled = false;
+                }, 2000);
+            });
+            
+            // Активация подписки
+            document.getElementById('activateSubscription').addEventListener('click', function() {
+                const inputKey = document.getElementById('subscriptionKey').value.trim().toUpperCase();
+                
+                if (subscriptionUsed) {
+                    alert('Данный ключ подписки уже был использован!');
+                    return;
+                }
+                
+                if (inputKey === PREMIUM_SUBSCRIPTION_KEY) {
+                    isSubscriptionActive = true;
+                    subscriptionUsed = true;
+                    localStorage.setItem('galaxyKeyGenSubscription', 'active');
+                    
+                    alert('Поздравляем! Подписка Premium успешно активирована!');
+                    updateUI();
+                } else {
+                    alert('Неверный ключ подписки! Пожалуйста, проверьте введенные данные.');
+                }
+            });
+            
+            // Автозаполнение ключа подписки при клике
+            document.getElementById('subscriptionKey').addEventListener('click', function() {
+                if (this.value === 'VEN2-ENTE-TRYM-GYMS') {
+                    this.select();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
