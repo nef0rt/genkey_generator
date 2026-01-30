@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -50,7 +50,7 @@
             position: relative;
         }
 
-        /* Шапка с навигацией */
+        /* Шапка */
         header {
             display: flex;
             justify-content: space-between;
@@ -86,46 +86,21 @@
             opacity: 0.8;
         }
 
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .nav-item {
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .nav-item:hover {
-            background: rgba(108, 99, 255, 0.2);
-        }
-
-        .nav-item.active {
-            background: rgba(108, 99, 255, 0.3);
-            border: 1px solid #6c63ff;
-        }
-
         .user-profile {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
 
         .user-avatar {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: linear-gradient(135deg, #6c63ff, #ff6b9d);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: bold;
             cursor: pointer;
             transition: transform 0.3s;
@@ -135,15 +110,29 @@
             transform: scale(1.1);
         }
 
+        .user-info {
+            text-align: right;
+        }
+
+        .user-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .user-stats {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
         /* Основной контент */
         .main-content {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 350px;
             gap: 30px;
             margin-bottom: 40px;
         }
 
-        /* Страница генератора */
+        /* Блок генерации */
         .generator-section {
             background: rgba(20, 20, 60, 0.7);
             border-radius: 20px;
@@ -172,21 +161,19 @@
 
         .platform-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
             margin-top: 15px;
         }
 
         .platform-card {
             background: rgba(40, 40, 80, 0.5);
             border-radius: 12px;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
             border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
         }
 
         .platform-card:hover {
@@ -201,28 +188,27 @@
         }
 
         .platform-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            font-size: 2rem;
+            margin-bottom: 10px;
             color: #6c63ff;
         }
 
         .platform-name {
             font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
+            font-size: 1rem;
         }
 
         .platform-desc {
-            font-size: 0.85rem;
-            opacity: 0.8;
-            margin-bottom: 15px;
-            min-height: 40px;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 5px;
+            height: 35px;
         }
 
         .key-display {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 12px;
-            padding: 30px;
+            padding: 25px;
             margin: 30px 0;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -235,25 +221,25 @@
         }
 
         .key-value {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
             background: linear-gradient(90deg, #ff6b9d, #6c63ff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            padding: 15px;
+            padding: 10px;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             margin-bottom: 20px;
             word-break: break-all;
-            line-height: 1.4;
         }
 
         .key-hint {
             font-size: 0.9rem;
             opacity: 0.7;
-            margin-top: 10px;
             font-style: italic;
+            margin-top: 10px;
         }
 
         .generate-btn {
@@ -268,7 +254,7 @@
             font-weight: bold;
             letter-spacing: 1px;
             display: block;
-            margin: 20px auto;
+            margin: 0 auto;
         }
 
         .generate-btn:hover {
@@ -282,83 +268,65 @@
             transform: none;
         }
 
-        /* Страница профиля */
-        .profile-section {
-            background: rgba(20, 20, 60, 0.7);
-            border-radius: 20px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: none;
+        /* Боковая панель */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
 
-        .profile-header {
+        .stats-card, .subscription-card {
+            background: rgba(20, 20, 60, 0.7);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stats-item {
             display: flex;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
+            justify-content: space-between;
+            margin: 15px 0;
+            padding-bottom: 10px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .profile-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #6c63ff, #ff6b9d);
+        .stats-value {
+            font-weight: bold;
+            color: #6c63ff;
+        }
+
+        .subscription-status {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
             font-weight: bold;
-        }
-
-        .profile-info h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #6c63ff;
-        }
-
-        .profile-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .stat-card {
-            background: rgba(40, 40, 80, 0.5);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #6c63ff;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
             font-size: 0.9rem;
-            opacity: 0.8;
         }
 
-        .subscription-management {
-            background: rgba(40, 40, 80, 0.5);
-            border-radius: 12px;
-            padding: 25px;
-            margin-top: 30px;
+        .status-active {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
         }
 
-        .subscription-input-group {
+        .status-inactive {
+            background: rgba(244, 67, 54, 0.2);
+            color: #F44336;
+        }
+
+        .subscription-input {
             display: flex;
             gap: 10px;
-            margin: 20px 0;
+            margin-top: 20px;
         }
 
-        .subscription-input-group input {
+        .subscription-input input {
             flex: 1;
             padding: 12px 15px;
             border-radius: 8px;
@@ -368,165 +336,31 @@
             font-family: 'Courier New', monospace;
         }
 
-        .subscription-input-group button {
-            padding: 12px 25px;
+        .subscription-input button {
+            padding: 12px 20px;
             border-radius: 8px;
             border: none;
             background: #6c63ff;
             color: white;
             cursor: pointer;
             font-weight: bold;
-            white-space: nowrap;
         }
 
-        /* Уведомление о ключе */
-        .key-notification {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(20, 20, 60, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            backdrop-filter: blur(20px);
-            border: 2px solid #6c63ff;
-            z-index: 1000;
-            display: none;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        .subscription-input button:hover {
+            background: #5a52d5;
         }
 
-        .notification-icon {
+        /* Подвал */
+        footer {
             text-align: center;
-            font-size: 4rem;
-            color: #4CAF50;
-            margin-bottom: 20px;
-        }
-
-        .notification-title {
-            text-align: center;
-            font-size: 1.8rem;
-            color: #4CAF50;
-            margin-bottom: 15px;
-        }
-
-        .notification-message {
-            text-align: center;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-
-        .notification-actions {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .notification-btn {
-            padding: 12px 30px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-
-        .notification-btn-primary {
-            background: #6c63ff;
-            color: white;
-        }
-
-        .notification-btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-
-        /* Уведомление о регистрации */
-        .register-notification {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(20, 20, 60, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            backdrop-filter: blur(20px);
-            border: 2px solid #ff6b9d;
-            z-index: 1000;
-            display: none;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .register-icon {
-            text-align: center;
-            font-size: 4rem;
-            color: #ff6b9d;
-            margin-bottom: 20px;
-        }
-
-        .register-title {
-            text-align: center;
-            font-size: 1.8rem;
-            color: #ff6b9d;
-            margin-bottom: 15px;
-        }
-
-        /* Футер с информацией о подписке */
-        .subscription-footer {
-            background: rgba(20, 20, 60, 0.7);
-            border-radius: 20px;
-            padding: 25px;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             margin-top: 40px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(108, 99, 255, 0.3);
-        }
-
-        .subscription-footer h3 {
-            color: #6c63ff;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        .subscription-footer p {
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-
-        .contact-info {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
-            opacity: 0.8;
             font-size: 0.9rem;
+            opacity: 0.7;
         }
 
-        .contact-info i {
-            color: #6c63ff;
-        }
-
-        /* Кнопка выхода */
-        .logout-btn {
-            background: rgba(244, 67, 54, 0.2);
-            color: #F44336;
-            border: 1px solid #F44336;
-            padding: 8px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-        }
-
-        .logout-btn:hover {
-            background: rgba(244, 67, 54, 0.4);
-        }
-
-        /* Модальные окна */
+        /* Модальное окно регистрации */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -549,6 +383,12 @@
             max-width: 500px;
             border: 1px solid rgba(108, 99, 255, 0.3);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #6c63ff;
         }
 
         .form-group {
@@ -597,10 +437,83 @@
             color: white;
         }
 
+        .form-actions button:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Уведомления */
+        .notification-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .notification {
+            background: linear-gradient(135deg, #1a0033 0%, #0c1445 100%);
+            border-radius: 20px;
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            border: 2px solid #ff6b9d;
+            text-align: center;
+        }
+
+        .notification-icon {
+            font-size: 4rem;
+            color: #ff6b9d;
+            margin-bottom: 20px;
+        }
+
+        .notification h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ff6b9d;
+        }
+
+        .notification p {
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .notification-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        /* Кнопка выхода */
+        .logout-btn {
+            background: rgba(244, 67, 54, 0.2);
+            color: #F44336;
+            border: 1px solid #F44336;
+            padding: 5px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .logout-btn:hover {
+            background: rgba(244, 67, 54, 0.4);
+        }
+
         /* Адаптивность */
         @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
             .platform-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             }
         }
 
@@ -608,16 +521,16 @@
             header {
                 flex-direction: column;
                 gap: 20px;
-            }
-            
-            .nav-menu {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .profile-header {
-                flex-direction: column;
                 text-align: center;
+            }
+            
+            .user-profile {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .platform-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
@@ -627,10 +540,15 @@
             }
             
             .key-value {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
+                letter-spacing: 2px;
             }
             
-            .subscription-input-group {
+            .subscription-input {
+                flex-direction: column;
+            }
+            
+            .form-actions {
                 flex-direction: column;
             }
         }
@@ -643,11 +561,15 @@
     <!-- Модальное окно регистрации -->
     <div class="modal-overlay" id="registrationModal">
         <div class="modal">
-            <h2><i class="fas fa-user-plus"></i> Регистрация</h2>
+            <h2><i class="fas fa-user-astronaut"></i> Регистрация в GalaxyKeyGen</h2>
             <form id="registrationForm">
                 <div class="form-group">
                     <label for="username">Имя пользователя</label>
-                    <input type="text" id="username" placeholder="Придумайте имя" required>
+                    <input type="text" id="username" placeholder="Введите ваш ник" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль (необязательно)</label>
+                    <input type="password" id="password" placeholder="Придумайте пароль">
                 </div>
                 <div class="form-actions">
                     <button type="submit" class="btn-primary">Создать профиль</button>
@@ -657,32 +579,34 @@
         </div>
     </div>
 
-    <!-- Уведомление о ключе -->
-    <div class="key-notification" id="keyNotification">
-        <div class="notification-icon">
-            <i class="fas fa-check-circle"></i>
-        </div>
-        <h3 class="notification-title">Ключ успешно создан!</h3>
-        <div class="notification-message" id="notificationMessage">
-            <!-- Сообщение будет заполнено JavaScript -->
-        </div>
-        <div class="notification-actions">
-            <button class="notification-btn notification-btn-primary" id="closeNotification">Закрыть</button>
+    <!-- Уведомление о необходимости регистрации -->
+    <div class="notification-overlay" id="registerNotification">
+        <div class="notification">
+            <div class="notification-icon">
+                <i class="fas fa-user-lock"></i>
+            </div>
+            <h3>Бро, сначала зарегистрируйся!</h3>
+            <p>Только зарегистрированные пользователи могут генерировать ключи</p>
+            <div class="notification-buttons">
+                <button class="btn-primary" id="goToRegisterBtn">Зарегистрироваться</button>
+                <button class="btn-secondary" id="cancelRegisterBtn">Отмена</button>
+            </div>
         </div>
     </div>
 
-    <!-- Уведомление о необходимости регистрации -->
-    <div class="register-notification" id="registerNotification">
-        <div class="register-icon">
-            <i class="fas fa-user-lock"></i>
-        </div>
-        <h3 class="register-title">Бро, сначала зарегистрируйся!</h3>
-        <div class="notification-message">
-            Только зарегистрированные пользователи могут генерировать ключи
-        </div>
-        <div class="notification-actions">
-            <button class="notification-btn notification-btn-primary" id="goToRegister">Зарегистрироваться</button>
-            <button class="notification-btn notification-btn-secondary" id="cancelRegister">Отмена</button>
+    <!-- Уведомление об успешной генерации -->
+    <div class="notification-overlay" id="successNotification">
+        <div class="notification">
+            <div class="notification-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Ключ успешно создан!</h3>
+            <div id="notificationMessage">
+                <!-- Сообщение будет заполнено JavaScript -->
+            </div>
+            <div class="notification-buttons">
+                <button class="btn-primary" id="closeSuccessBtn">Закрыть</button>
+            </div>
         </div>
     </div>
 
@@ -698,110 +622,90 @@
                     <p>Генератор лицензионных ключей</p>
                 </div>
             </div>
-            
-            <div class="nav-menu">
-                <div class="nav-item active" id="navGenerator">
-                    <i class="fas fa-bolt"></i>
-                    <span>Генератор</span>
-                </div>
-                <div class="nav-item" id="navProfile">
-                    <i class="fas fa-user"></i>
-                    <span>Профиль</span>
-                </div>
-            </div>
-            
             <div class="user-profile">
                 <div class="user-info">
                     <div class="user-name" id="displayUsername">Гость</div>
+                    <div class="user-stats">Ключей: <span id="totalKeys">0</span></div>
+                    <button class="logout-btn" id="logoutBtn" style="display: none;">
+                        <i class="fas fa-sign-out-alt"></i> Выйти
+                    </button>
                 </div>
-                <div class="user-avatar" id="userAvatar" title="Войти в аккаунт">
+                <div class="user-avatar" id="userAvatar" title="Изменить профиль">
                     G
                 </div>
-                <button class="logout-btn" id="logoutBtn" style="display: none;">
-                    <i class="fas fa-sign-out-alt"></i> Выйти
-                </button>
             </div>
         </header>
 
         <!-- Основной контент -->
         <div class="main-content">
-            <!-- Страница генератора -->
-            <div class="generator-section" id="generatorPage">
+            <!-- Блок генерации -->
+            <div class="generator-section">
                 <h2 class="section-title">
                     <i class="fas fa-rocket"></i> Выберите сервис
                 </h2>
                 
                 <div class="platform-selector">
                     <div class="platform-grid" id="platformGrid">
-                        <!-- Платформы будут добавлены через JavaScript -->
+                        <!-- Сервисы будут добавлены через JavaScript -->
                     </div>
                 </div>
 
                 <div class="key-display">
                     <div class="key-label">Ваш ключ активации:</div>
                     <div class="key-value" id="generatedKey">Выберите сервис и нажмите "Сгенерировать"</div>
-                    <div class="key-hint" id="keyHint">
-                        <!-- Подсказка о формате ключа -->
-                    </div>
+                    <div class="key-hint" id="keyHint"></div>
                     <button class="generate-btn" id="generateBtn">
                         <i class="fas fa-bolt"></i> Сгенерировать ключ
                     </button>
                 </div>
             </div>
 
-            <!-- Страница профиля -->
-            <div class="profile-section" id="profilePage">
-                <div class="profile-header">
-                    <div class="profile-avatar" id="profileAvatar">
-                        G
-                    </div>
-                    <div class="profile-info">
-                        <h2 id="profileUsername">Гость</h2>
-                        <p id="profileStatus">Не авторизован</p>
-                    </div>
-                </div>
-
-                <div class="profile-stats">
-                    <div class="stat-card">
-                        <div class="stat-value" id="statTotalKeys">0</div>
-                        <div class="stat-label">Всего ключей</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="statTodayKeys">0/3</div>
-                        <div class="stat-label">Ключей сегодня</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="statSubscription">Нет</div>
-                        <div class="stat-label">Подписка</div>
-                    </div>
-                </div>
-
-                <div class="subscription-management">
+            <!-- Боковая панель -->
+            <div class="sidebar">
+                <!-- Статистика -->
+                <div class="stats-card">
                     <h3 class="section-title">
-                        <i class="fas fa-crown"></i> Управление подпиской
+                        <i class="fas fa-chart-bar"></i> Ваша статистика
                     </h3>
-                    <p>Введите ключ активации для получения Premium доступа:</p>
-                    <div class="subscription-input-group">
+                    <div class="stats-item">
+                        <span>Всего ключей:</span>
+                        <span class="stats-value" id="statsTotalKeys">0</span>
+                    </div>
+                    <div class="stats-item">
+                        <span>Сегодня:</span>
+                        <span class="stats-value" id="statsTodayKeys">0/3</span>
+                    </div>
+                    <div class="stats-item">
+                        <span>Последний сервис:</span>
+                        <span class="stats-value" id="statsLastPlatform">-</span>
+                    </div>
+                </div>
+
+                <!-- Подписка -->
+                <div class="subscription-card">
+                    <h3 class="section-title">
+                        <i class="fas fa-crown"></i> Подписка Premium
+                    </h3>
+                    <div class="subscription-status">
+                        <span>Статус:</span>
+                        <div class="status-badge status-inactive" id="subscriptionStatus">Не активна</div>
+                    </div>
+                    <p>Введите ключ активации для доступа к премиум функциям</p>
+                    <div class="subscription-input">
                         <input type="text" id="subscriptionKey" placeholder="Введите код активации...">
                         <button id="activateSubscription">Активировать</button>
                     </div>
-                    <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 10px;">
-                        <i class="fas fa-info-circle"></i> Подписка Premium снимает лимиты и открывает все функции
-                    </p>
                 </div>
             </div>
         </div>
 
-        <!-- Футер с информацией о подписке -->
-        <div class="subscription-footer">
-            <h3><i class="fas fa-crown"></i> Приобрести подписку</h3>
-            <p>Получите неограниченную генерацию ключей и доступ ко всем функциям с подпиской Premium</p>
-            <div class="contact-info">
-                <i class="fab fa-telegram"></i>
-                <span>@fuckfluger [TG]</span>
-                <i class="fas fa-info-circle" title="Информация о сервисе" style="margin-left: 20px;"></i>
-            </div>
-        </div>
+        <!-- Подвал -->
+        <footer>
+            <p>GalaxyKeyGen © 2024 | Приобрести подписку: @fuckfluger [TG]</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">
+                <i class="fas fa-info-circle"></i> Внимание: Данный сайт является демонстрационным проектом.
+            </p>
+        </footer>
     </div>
 
     <!-- JavaScript -->
@@ -812,124 +716,61 @@
                 id: 'windows', 
                 name: 'Windows', 
                 icon: 'fab fa-windows',
-                desc: 'Активация Windows 10/11 Pro',
+                desc: 'Windows 10/11 Pro',
                 keyFormat: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX'
             },
             { 
                 id: 'office', 
                 name: 'MS Office', 
                 icon: 'fas fa-file-word',
-                desc: 'Microsoft Office 2021/365',
+                desc: 'Office 2021/365',
                 keyFormat: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX'
-            },
-            { 
-                id: 'adobe', 
-                name: 'Adobe CC', 
-                icon: 'fas fa-palette',
-                desc: 'Creative Cloud активация',
-                keyFormat: 'ADOBE-XXXX-XXXX-XXXX-XXXX'
             },
             { 
                 id: 'steam', 
                 name: 'Steam', 
                 icon: 'fab fa-steam',
-                desc: 'Пополнение Steam Wallet',
+                desc: 'Steam Wallet',
                 keyFormat: 'XXXXX-XXXXX-XXXXX'
-            },
-            { 
-                id: 'origin', 
-                name: 'EA Play', 
-                icon: 'fas fa-gamepad',
-                desc: 'EA Origin/EA Play ключи',
-                keyFormat: 'ORIGIN-XXXX-XXXX-XXXX'
             },
             { 
                 id: 'spotify', 
                 name: 'Spotify', 
                 icon: 'fab fa-spotify',
-                desc: 'Spotify Premium аккаунты',
+                desc: 'Premium аккаунты',
                 keyFormat: 'spotify:user:xxxxx:xxxx'
             },
             { 
                 id: 'netflix', 
                 name: 'Netflix', 
                 icon: 'fas fa-tv',
-                desc: 'Netflix Premium подписка',
+                desc: 'Premium подписка',
                 keyFormat: 'NF-XXXX-XXXX-XXXX-XXX'
             },
             { 
-                id: 'youtube', 
-                name: 'YouTube', 
-                icon: 'fab fa-youtube',
-                desc: 'YouTube Premium доступ',
-                keyFormat: 'YT-XXXX-XXXX-XXXX-XXXX'
+                id: 'adobe', 
+                name: 'Adobe CC', 
+                icon: 'fas fa-palette',
+                desc: 'Creative Cloud',
+                keyFormat: 'ADOBE-XXXX-XXXX-XXXX-XXXX'
             },
             { 
-                id: 'antivirus', 
-                name: 'Антивирусы', 
-                icon: 'fas fa-shield-alt',
-                desc: 'Kaspersky, ESET, Norton',
-                keyFormat: 'XXXX-XXXX-XXXX-XXXX'
-            },
-            { 
-                id: 'vmware', 
-                name: 'VMware', 
-                icon: 'fas fa-server',
-                desc: 'VMware Workstation Pro',
-                keyFormat: 'XXXXX-XXXXX-XXXXX-XXXXX'
-            },
-            { 
-                id: 'autodesk', 
-                name: 'Autodesk', 
-                icon: 'fas fa-cube',
-                desc: 'AutoCAD, Maya, 3DS Max',
-                keyFormat: 'XXXX-XXXXXXXX'
-            },
-            { 
-                id: 'ios', 
-                name: 'Apple', 
-                icon: 'fab fa-apple',
-                desc: 'App Store, iTunes коды',
-                keyFormat: 'XXXX XXXX XXXX XXXX'
+                id: 'origin', 
+                name: 'EA Play', 
+                icon: 'fas fa-gamepad',
+                desc: 'EA ключи',
+                keyFormat: 'ORIGIN-XXXX-XXXX-XXXX'
             },
             { 
                 id: 'epic', 
                 name: 'Epic Games', 
                 icon: 'fas fa-ghost',
-                desc: 'Epic Games Store ключи',
-                keyFormat: 'XXXX-XXXX-XXXX-XXXX'
-            },
-            { 
-                id: 'uplay', 
-                name: 'Ubisoft', 
-                icon: 'fas fa-tower-broadcast',
-                desc: 'Ubisoft Connect активация',
-                keyFormat: 'UBI-XXXX-XXXX-XXXX-XXXX'
-            },
-            { 
-                id: 'battlenet', 
-                name: 'Battle.net', 
-                icon: 'fab fa-battle-net',
-                desc: 'Blizzard игровые ключи',
-                keyFormat: 'XXXX-XXXX-XXXX-XXXX-XXXX'
-            },
-            { 
-                id: 'gog', 
-                name: 'GOG', 
-                icon: 'fas fa-galaxy',
-                desc: 'GOG.com цифровые ключи',
-                keyFormat: 'XXXX-XXXX-XXXX-XXXX'
-            },
-            { 
-                id: 'linux', 
-                name: 'Linux', 
-                icon: 'fab fa-linux',
-                desc: 'Дистрибутивы Linux',
+                desc: 'Epic Store',
                 keyFormat: 'XXXX-XXXX-XXXX-XXXX'
             }
         ];
 
-        // Премиум ключ подписки (только одна активация)
+        // Премиум ключ подписки
         const PREMIUM_SUBSCRIPTION_KEY = "VEN2-ENTE-TRYM-GYMS";
         let isSubscriptionActive = false;
         let subscriptionUsed = false;
@@ -937,6 +778,7 @@
         // Данные пользователя
         let userData = {
             username: "Гость",
+            password: "",
             avatarColor: "#6c63ff",
             totalKeys: 0,
             todayKeys: 0,
@@ -945,21 +787,13 @@
             isGuest: true
         };
 
-        // Инициализация при загрузке страницы
+        // Инициализация
         document.addEventListener('DOMContentLoaded', function() {
+            console.log("Документ загружен, инициализация...");
             initStars();
             loadUserData();
             renderPlatforms();
             setupEventListeners();
-            
-            // Проверяем, была ли сегодня авторизация
-            const today = new Date().toISOString().split('T')[0];
-            if (userData.lastLogin !== today) {
-                userData.todayKeys = 0;
-                userData.lastLogin = today;
-                saveUserData();
-            }
-            
             updateUI();
         });
 
@@ -989,13 +823,34 @@
             }
         }
 
-        // Загрузка данных пользователя из localStorage
+        // Загрузка данных пользователя
         function loadUserData() {
+            console.log("Загрузка данных пользователя...");
             const savedData = localStorage.getItem('galaxyKeyGenUser');
+            
             if (savedData) {
-                userData = JSON.parse(savedData);
-                document.getElementById('registrationModal').style.display = 'none';
+                try {
+                    userData = JSON.parse(savedData);
+                    console.log("Данные загружены:", userData);
+                    
+                    // Проверяем дату последнего входа
+                    const today = new Date().toISOString().split('T')[0];
+                    if (userData.lastLogin !== today) {
+                        console.log("Сброс дневного лимита");
+                        userData.todayKeys = 0;
+                        userData.lastLogin = today;
+                        saveUserData();
+                    }
+                    
+                    // Скрываем окно регистрации
+                    document.getElementById('registrationModal').style.display = 'none';
+                    
+                } catch (e) {
+                    console.error("Ошибка парсинга данных:", e);
+                    userData.isGuest = true;
+                }
             } else {
+                console.log("Нет сохраненных данных, показываем регистрацию");
                 userData.isGuest = true;
                 document.getElementById('registrationModal').style.display = 'flex';
             }
@@ -1011,6 +866,7 @@
         // Сохранение данных пользователя
         function saveUserData() {
             localStorage.setItem('galaxyKeyGenUser', JSON.stringify(userData));
+            console.log("Данные сохранены:", userData);
         }
 
         // Отображение сервисов
@@ -1031,7 +887,11 @@
                     <div class="platform-desc">${platform.desc}</div>
                 `;
                 
-                platformCard.addEventListener('click', () => selectPlatform(platform.id));
+                platformCard.addEventListener('click', () => {
+                    console.log("Выбран сервис:", platform.id);
+                    selectPlatform(platform.id);
+                });
+                
                 platformGrid.appendChild(platformCard);
             });
             
@@ -1045,6 +905,7 @@
         let selectedPlatformId = '';
         function selectPlatform(platformId) {
             selectedPlatformId = platformId;
+            console.log("Выбран platformId:", platformId);
             
             // Снимаем выделение со всех карточек
             document.querySelectorAll('.platform-card').forEach(card => {
@@ -1060,14 +921,14 @@
             // Обновляем подсказку о формате ключа
             const platform = platforms.find(p => p.id === platformId);
             if (platform) {
-                document.getElementById('keyHint').textContent = `Формат ключа: ${platform.keyFormat}`;
+                document.getElementById('keyHint').textContent = `Формат: ${platform.keyFormat}`;
                 userData.lastPlatform = platform.name;
                 saveUserData();
                 updateUI();
             }
         }
 
-        // Генерация ключа в зависимости от сервиса
+        // Генерация ключа
         function generateKeyForPlatform(platformId) {
             const platform = platforms.find(p => p.id === platformId);
             if (!platform) return 'Ошибка: сервис не найден';
@@ -1094,31 +955,27 @@
 
         // Обновление интерфейса
         function updateUI() {
+            console.log("Обновление интерфейса, userData:", userData);
+            
             // Обновляем имя пользователя и аватар
             document.getElementById('displayUsername').textContent = userData.username;
-            document.getElementById('profileUsername').textContent = userData.username;
-            document.getElementById('profileStatus').textContent = userData.isGuest ? 'Гостевой аккаунт' : 'Зарегистрирован';
-            
-            const avatarLetter = userData.username.charAt(0).toUpperCase();
-            document.getElementById('userAvatar').textContent = avatarLetter;
-            document.getElementById('profileAvatar').textContent = avatarLetter;
-            
+            document.getElementById('userAvatar').textContent = userData.username.charAt(0).toUpperCase();
             document.getElementById('userAvatar').style.background = `linear-gradient(135deg, ${userData.avatarColor}, #ff6b9d)`;
-            document.getElementById('profileAvatar').style.background = `linear-gradient(135deg, ${userData.avatarColor}, #ff6b9d)`;
             
             // Обновляем статистику
-            document.getElementById('statTotalKeys').textContent = userData.totalKeys;
-            const remainingKeys = Math.max(0, 3 - userData.todayKeys);
-            document.getElementById('statTodayKeys').textContent = `${userData.todayKeys}/3`;
+            document.getElementById('totalKeys').textContent = userData.totalKeys;
+            document.getElementById('statsTotalKeys').textContent = userData.totalKeys;
+            document.getElementById('statsTodayKeys').textContent = `${userData.todayKeys}/3`;
+            document.getElementById('statsLastPlatform').textContent = userData.lastPlatform || '-';
             
             // Обновляем статус подписки
-            const statusElement = document.getElementById('statSubscription');
+            const statusElement = document.getElementById('subscriptionStatus');
             if (isSubscriptionActive) {
-                statusElement.textContent = 'Premium';
-                statusElement.style.color = '#4CAF50';
+                statusElement.textContent = 'Активна';
+                statusElement.className = 'status-badge status-active';
             } else {
-                statusElement.textContent = 'Нет';
-                statusElement.style.color = '#F44336';
+                statusElement.textContent = 'Не активна';
+                statusElement.className = 'status-badge status-inactive';
             }
             
             // Показываем/скрываем кнопку выхода
@@ -1138,59 +995,40 @@
             };
         }
 
-        // Показать уведомление о необходимости регистрации
-        function showRegisterNotification() {
-            document.getElementById('registerNotification').style.display = 'block';
-        }
-
-        // Показать уведомление о ключе
-        function showKeyNotification(platformName, key, remainingKeys) {
-            const message = document.getElementById('notificationMessage');
-            if (isSubscriptionActive) {
-                message.innerHTML = `
-                    <p><strong>Сервис:</strong> ${platformName}</p>
-                    <p><strong>Ключ:</strong> ${key}</p>
-                    <p style="color: #4CAF50; margin-top: 10px;">
-                        <i class="fas fa-crown"></i> Благодаря подписке Premium у вас неограниченная генерация!
-                    </p>
-                `;
-            } else {
-                message.innerHTML = `
-                    <p><strong>Сервис:</strong> ${platformName}</p>
-                    <p><strong>Ключ:</strong> ${key}</p>
-                    <p style="margin-top: 10px;">
-                        У вас осталось <strong>${remainingKeys}</strong> ключей в день.
-                        Хотите больше? Приобретите подписку Premium.
-                    </p>
-                `;
-            }
-            document.getElementById('keyNotification').style.display = 'block';
-        }
-
         // Настройка обработчиков событий
         function setupEventListeners() {
+            console.log("Настройка обработчиков событий...");
+            
             // Регистрация
             document.getElementById('registrationForm').addEventListener('submit', function(e) {
                 e.preventDefault();
+                console.log("Отправка формы регистрации");
                 
                 const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value;
+                
                 if (username.length < 2) {
                     alert('Имя пользователя должно содержать минимум 2 символа');
                     return;
                 }
                 
                 userData.username = username;
+                userData.password = password;
                 userData.avatarColor = "#6c63ff";
                 userData.isGuest = false;
                 userData.totalKeys = 0;
                 userData.todayKeys = 0;
+                userData.lastLogin = new Date().toISOString().split('T')[0];
                 
                 saveUserData();
                 document.getElementById('registrationModal').style.display = 'none';
                 updateUI();
+                alert(`Добро пожаловать, ${username}!`);
             });
             
+            // Пропустить регистрацию
             document.getElementById('skipRegistration').addEventListener('click', function() {
+                console.log("Пропуск регистрации");
                 userData.username = 'Гость';
                 userData.isGuest = true;
                 saveUserData();
@@ -1198,25 +1036,139 @@
                 updateUI();
             });
             
-            // Навигация
-            document.getElementById('navGenerator').addEventListener('click', function() {
-                document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-                this.classList.add('active');
-                document.getElementById('generatorPage').style.display = 'block';
-                document.getElementById('profilePage').style.display = 'none';
-            });
-            
-            document.getElementById('navProfile').addEventListener('click', function() {
-                document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-                this.classList.add('active');
-                document.getElementById('generatorPage').style.display = 'none';
-                document.getElementById('profilePage').style.display = 'block';
-            });
-            
-            // Вход/регистрация по клику на аватар
+            // Изменение профиля
             document.getElementById('userAvatar').addEventListener('click', function() {
+                console.log("Клик по аватару");
                 if (userData.isGuest) {
                     document.getElementById('registrationModal').style.display = 'flex';
+                    document.getElementById('username').value = '';
+                    document.getElementById('password').value = '';
                 }
             });
-    
+            
+            // Выход
+            document.getElementById('logoutBtn').addEventListener('click', function() {
+                if (confirm('Вы уверены, что хотите выйти?')) {
+                    userData.username = 'Гость';
+                    userData.isGuest = true;
+                    userData.avatarColor = "#6c63ff";
+                    saveUserData();
+                    updateUI();
+                    alert('Вы вышли из аккаунта');
+                }
+            });
+            
+            // Генерация ключа
+            document.getElementById('generateBtn').addEventListener('click', function() {
+                console.log("Нажата кнопка генерации");
+                
+                if (!selectedPlatformId) {
+                    alert('Пожалуйста, выберите сервис!');
+                    return;
+                }
+                
+                // Проверка на гостевой аккаунт
+                if (userData.isGuest) {
+                    console.log("Гостевой аккаунт, показываем уведомление");
+                    document.getElementById('registerNotification').style.display = 'flex';
+                    return;
+                }
+                
+                // Проверка лимитов
+                const limitCheck = checkKeyLimit();
+                if (!limitCheck.canGenerate) {
+                    alert('Бесплатный лимит исчерпан! Активируйте подписку для генерации большего количества ключей.');
+                    return;
+                }
+                
+                const platform = platforms.find(p => p.id === selectedPlatformId);
+                const key = generateKeyForPlatform(selectedPlatformId);
+                document.getElementById('generatedKey').textContent = key;
+                
+                // Обновляем статистику
+                userData.totalKeys++;
+                userData.todayKeys++;
+                saveUserData();
+                updateUI();
+                
+                // Показываем уведомление об успехе
+                const messageElement = document.getElementById('notificationMessage');
+                if (isSubscriptionActive) {
+                    messageElement.innerHTML = `
+                        <p><strong>Сервис:</strong> ${platform.name}</p>
+                        <p><strong>Ключ:</strong> ${key}</p>
+                        <p style="color: #4CAF50; margin-top: 10px;">
+                            <i class="fas fa-crown"></i> Благодаря подписке Premium у вас неограниченная генерация!
+                        </p>
+                    `;
+                } else {
+                    messageElement.innerHTML = `
+                        <p><strong>Сервис:</strong> ${platform.name}</p>
+                        <p><strong>Ключ:</strong> ${key}</p>
+                        <p style="margin-top: 10px;">
+                            У вас осталось <strong>${limitCheck.remaining - 1}</strong> ключей в день.<br>
+                            Хотите больше? Приобретите подписку Premium.
+                        </p>
+                    `;
+                }
+                document.getElementById('successNotification').style.display = 'flex';
+                
+                // Анимация кнопки
+                const btn = this;
+                btn.innerHTML = '<i class="fas fa-check"></i> Готово!';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-bolt"></i> Сгенерировать ключ';
+                    btn.disabled = false;
+                }, 2000);
+            });
+            
+            // Активация подписки
+            document.getElementById('activateSubscription').addEventListener('click', function() {
+                const inputKey = document.getElementById('subscriptionKey').value.trim().toUpperCase();
+                
+                if (subscriptionUsed) {
+                    alert('Данный ключ подписки уже был использован!');
+                    return;
+                }
+                
+                if (inputKey === PREMIUM_SUBSCRIPTION_KEY) {
+                    isSubscriptionActive = true;
+                    subscriptionUsed = true;
+                    localStorage.setItem('galaxyKeyGenSubscription', 'active');
+                    
+                    alert('Поздравляем! Подписка Premium успешно активирована!');
+                    updateUI();
+                } else {
+                    alert('Неверный ключ подписки! Пожалуйста, проверьте введенные данные.');
+                }
+            });
+            
+            // Кнопка Зарегистрироваться в уведомлении
+            document.getElementById('goToRegisterBtn').addEventListener('click', function() {
+                document.getElementById('registerNotification').style.display = 'none';
+                document.getElementById('registrationModal').style.display = 'flex';
+            });
+            
+            // Отмена в уведомлении
+            document.getElementById('cancelRegisterBtn').addEventListener('click', function() {
+                document.getElementById('registerNotification').style.display = 'none';
+            });
+            
+            // Закрыть уведомление об успехе
+            document.getElementById('closeSuccessBtn').addEventListener('click', function() {
+                document.getElementById('successNotification').style.display = 'none';
+            });
+            
+            // Автозаполнение ключа подписки
+            document.getElementById('subscriptionKey').addEventListener('click', function() {
+                if (this.value === '') {
+                    this.value = PREMIUM_SUBSCRIPTION_KEY;
+                    this.select();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
